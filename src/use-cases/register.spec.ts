@@ -1,5 +1,5 @@
 import { describe, expect, test, it } from "vitest";
-import { RegisterUseCase } from "./registerUseCase";
+import { RegisterUseCase } from "./register";
 import { compare } from "bcryptjs";
 import { InMemoryUsersRepository } from "../repositories/in-memory/in-memory-users-repository";
 import { ApiError } from "../errors/ApiError";
