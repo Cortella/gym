@@ -3,6 +3,8 @@ import { PrismaUsersRepository } from "../../repositories/prisma/prisma-users-re
 import { z } from "zod";
 import { RegisterUseCase } from "../../use-cases/registerUseCase";
 import { Prisma } from "@prisma/client";
+import { ApiError } from "../../errors/ApiError";
+import { STATUS_CODE } from "../../utils/status-code";
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
   const registerBodySchema = z.object({
@@ -18,7 +20,10 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
 
     await registerUseCase.execute({ email, name, password });
   } catch (e) {
-    return reply.status(409).send();
+    if (e instanceof ApiError){
+      return reply.status(e?.statusCode).send({ message: e?.message });
+    }
+    return reply.status(STATUS_CODE.INTERNAL_SERVER_ERROR).send();
   }
-  return reply.status(201).send();
+  return reply.status(STATUS_CODE.CREATED).send();
 }
