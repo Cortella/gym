@@ -8,7 +8,7 @@ import { beforeEach } from "vitest";
 let gymsRepository: InMemoryGymsRepository;
 let sut: CreateGymUseCase;
 
-describe("CreateGym Use Case", () => {
+describe("Create Gym Use Case", () => {
   beforeEach(() => {
     gymsRepository = new InMemoryGymsRepository();
     sut = new CreateGymUseCase(gymsRepository);

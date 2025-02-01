@@ -10,8 +10,8 @@ Uma aplicação de exemplo que simula funcionalidades básicas de um app de acad
 - [x] Deve ser possível obter o perfil de um usuário logado;
 - [x] Deve ser possível obter o número de check-ins realizados pelo usuário logado;
 - [x] Deve ser possível o usuário obter seu histórico de check-ins;
-- [] Deve ser possível o usuário buscar academias próximas (até 10 km);
-- [] Deve ser possível o usuário busca academias pelo nome;
+- [x] Deve ser possível o usuário buscar academias próximas (até 10 km);
+- [x] Deve ser possível o usuário buscar academias pelo nome;
 - [x] Deve ser possível o usuário realizar check-in em uma academia;
 - [] Deve ser possível validar o check-in de um usuário;
 - [x] Deve ser possível cadastrar uma academia.
