@@ -5,6 +5,13 @@ import dayjs from "dayjs";
 
 export class InMemoryCheckInsRepository implements CheckInsRepository {
   public items: CheckIn[] = [];
+
+  async findManyByUserId(userId: string, page: number): Promise<CheckIn[]> {
+    return this.items
+      .filter((item) => item.user_id === userId)
+      .slice((page - 1) * 20, page * 20);
+  }
+
   async findByUserIdOnDate(
     userId: string,
     date: Date
@@ -12,17 +19,14 @@ export class InMemoryCheckInsRepository implements CheckInsRepository {
     const startOfTheDay = dayjs(date).startOf("date");
     const endOfTheDay = dayjs(date).endOf("date");
 
-    const ckeckOnSameDate = this.items.find(
-      (checkIn) => {
-        const checkInDate = dayjs(checkIn.created_at);
+    const ckeckOnSameDate = this.items.find((checkIn) => {
+      const checkInDate = dayjs(checkIn.created_at);
 
-        const isOnSameDate = checkInDate.isAfter(startOfTheDay) && checkInDate.isBefore(endOfTheDay);
+      const isOnSameDate =
+        checkInDate.isAfter(startOfTheDay) && checkInDate.isBefore(endOfTheDay);
 
-        
-
-        return checkIn.user_id === userId && isOnSameDate;
-      }
-    );
+      return checkIn.user_id === userId && isOnSameDate;
+    });
 
     if (!ckeckOnSameDate) return null;
     return ckeckOnSameDate;

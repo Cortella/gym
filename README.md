@@ -14,7 +14,7 @@ Uma aplicação de exemplo que simula funcionalidades básicas de um app de acad
 - [] Deve ser possível o usuário busca academias pelo nome;
 - [x] Deve ser possível o usuário realizar check-in em uma academia;
 - [] Deve ser possível validar o check-in de um usuário;
-- [] Deve ser possível cadastrar uma academia.
+- [x] Deve ser possível cadastrar uma academia.
 
 ## Regras de Negócio (RNs)
 <!-- Condições aplicadas a cada Requisito Funcional (if) -->

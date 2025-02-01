@@ -33,7 +33,6 @@ export class CheckInUseCase {
 
     if (!gym) throw new ApiError("Gym not found!", STATUS_CODE.NOT_FOUND);
 
-    //calcular a distancia
     const distance = getDistanceBetweenCoordinates(
       {
         latitude: userLat,
