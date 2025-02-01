@@ -1,5 +1,4 @@
 import { describe, expect, test, it, beforeEach, afterEach, vi } from "vitest";
-import { ApiError } from "../errors/ApiError";
 import { InMemoryCheckInsRepository } from "../repositories/in-memory/in-memory-check-ins-repository";
 import { FetchUserCheckInsHistoryUseCase } from "./fetch-member-check-ins-history";
 
@@ -57,7 +56,3 @@ describe("Fetch User Check-in history Use Case", () => {
     ]))
   });
 });
-
-
-
-//casa vo lat = -20.4906016     long = -43.8639983
