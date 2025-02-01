@@ -42,4 +42,4 @@ Uma aplicação de exemplo que simula funcionalidades básicas de um app de acad
 1. Clone o repositório: `git clone https://github.com/alexandrecpedro/03-api-solid.git`
 2. Instale as dependências: `npm install`
 3. Inicie o servidor: `npm run dev`
-4. Acesse `http://localhost:3000` para testar a API.
+4. Acesse `http://localhost:3333` para testar a API.
