@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { app } from "../../app";
 import request from "supertest";
+import { STATUS_CODE } from "../../utils/status-code";
 
 describe("Register (e2e)", () => {
   beforeAll(async () => {
@@ -9,7 +10,7 @@ describe("Register (e2e)", () => {
   afterAll(() => {
     app.close();
   });
-  
+
   it("should be able to register", async () => {
     const response = await request(app.server).post("/users").send({
       name: "John Doe",
@@ -17,6 +18,6 @@ describe("Register (e2e)", () => {
       password: "123456",
     });
 
-    expect(response.statusCode).toEqual(201);
+    expect(response.statusCode).toEqual(STATUS_CODE.CREATED);
   });
 });
