@@ -1,8 +1,8 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
-import { ApiError } from "../../errors/ApiError";
-import { STATUS_CODE } from "../../utils/status-code";
-import { makeAuthenticateUseCase } from "../../use-cases/factories/make-authenticate-use-case";
+import { ApiError } from "../../../errors/ApiError";
+import { STATUS_CODE } from "../../../utils/status-code";
+import { makeAuthenticateUseCase } from "../../../use-cases/factories/make-authenticate-use-case";
 
 export async function authenticate(
   request: FastifyRequest,

@@ -1,8 +1,6 @@
 import { describe, expect, test, it } from "vitest";
 import { CreateGymUseCase } from "./create-gym";
-import { compare } from "bcryptjs";
 import { InMemoryGymsRepository } from "../repositories/in-memory/in-memory-gyms-repository";
-import { ApiError } from "../errors/ApiError";
 import { beforeEach } from "vitest";
 
 let gymsRepository: InMemoryGymsRepository;

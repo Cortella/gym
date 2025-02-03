@@ -25,7 +25,6 @@ export class RegisterUseCase {
 
     const userAlreadyExists = await this.usersRepository.findUserByEmail(email);
 
-    console.log("userAlreadyExists", userAlreadyExists);
     if (!!userAlreadyExists) throw new ApiError("User already exists!", STATUS_CODE.CONFLICT);
 
     const user = await this.usersRepository.create({

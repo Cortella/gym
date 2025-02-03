@@ -4,20 +4,26 @@ import request from "supertest";
 import { STATUS_CODE } from "../../../utils/status-code";
 import { createAndAuthUser } from "../../../utils/test/create-and-auth-user";
 
-describe("Profile (e2e)", () => {
+describe("Create Gym (e2e)", () => {
   beforeAll(async () => {
-    await app.ready();
+    app.ready();
   });
-  afterAll(async () => {
-    await app.close();
+  afterAll(() => {
+    app.close();
   });
 
-  it("should be able to Profile", async () => {
+  it("should be able to create a gym", async () => {
     const { token } = await createAndAuthUser(app);
     const response = await request(app.server)
-      .get("/me")
+      .post("/gyms")
       .set("Authorization", `Bearer ${token}`)
-      .send();
+      .send({
+        title: "Academia",
+        description: "Academia de programação",
+        phone: "11999999999",
+        latitude: -27.2092052,
+        longitude: -49.6401091
+      });
 
     expect(response.statusCode).toEqual(STATUS_CODE.OK);
   });

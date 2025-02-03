@@ -2,27 +2,26 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
 import { ApiError } from "../../../errors/ApiError";
 import { STATUS_CODE } from "../../../utils/status-code";
-import { makeSearchGymsUseCase } from "../../../use-cases/factories/make-search-gyms-use-case";
+import { makeFetchUserCheckInsHistoryUseCase } from "../../../use-cases/factories/make-fetch-user-check-ins-history-use-case";
 
-export async function searchGymController(
+export async function HistoryController(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
-  const searchGymBodySchema = z.object({
-    q: z.string(),
+  const historyBodySchema = z.object({
     page: z.coerce.number().min(1).default(1),
   });
 
-  const { q, page } = searchGymBodySchema.parse(request.query);
+  const { page } = historyBodySchema.parse(request.query);
   try {
-    const searchGymUseCase = makeSearchGymsUseCase();
+    const historyUseCase = makeFetchUserCheckInsHistoryUseCase();
 
-    const { gyms } = await searchGymUseCase.execute({
-      query: q,
+    const { checkIns } = await historyUseCase.execute({
+      userId: request.user.sub,
       page,
     });
 
-    return reply.status(STATUS_CODE.OK).send(gyms);
+    return reply.status(STATUS_CODE.OK).send(checkIns);
   } catch (e) {
     if (e instanceof ApiError) {
       return reply.status(e?.statusCode).send({ message: e?.message });

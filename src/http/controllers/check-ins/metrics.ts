@@ -1,21 +1,20 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { z } from "zod";
 import { ApiError } from "../../../errors/ApiError";
 import { STATUS_CODE } from "../../../utils/status-code";
-import { makeGetUserProfileUseCase } from "../../../use-cases/factories/make-get-user-profile-use-case";
+import { makeGetUserMetricsUseCase } from "../../../use-cases/factories/make-get-user-metrics-use-case";
 
-export async function getUserProfile(
+export async function MetricsController(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
   try {
-    const getUserProfileUseCase = makeGetUserProfileUseCase();
+    const metricsUseCase = makeGetUserMetricsUseCase();
 
-    const { user } = await getUserProfileUseCase.execute({
+    const { checkInsCount } = await metricsUseCase.execute({
       userId: request.user.sub,
     });
 
-    return reply.status(STATUS_CODE.OK).send(user);
+    return reply.status(STATUS_CODE.OK).send(checkInsCount);
   } catch (e) {
     if (e instanceof ApiError) {
       return reply.status(e?.statusCode).send({ message: e?.message });

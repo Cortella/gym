@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { ApiError } from "../../errors/ApiError";
-import { STATUS_CODE } from "../../utils/status-code";
-import { makeRegisterUseCase } from "../../use-cases/factories/make-register-use-case";
+import { ApiError } from "../../../errors/ApiError";
+import { STATUS_CODE } from "../../../utils/status-code";
+import { makeRegisterUseCase } from "../../../use-cases/factories/make-register-use-case";
 import { z } from "zod";
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
