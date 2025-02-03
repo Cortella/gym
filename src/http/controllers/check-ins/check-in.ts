@@ -29,7 +29,7 @@ export async function CheckInController(
       userLong: longitude,
     });
 
-    return reply.status(STATUS_CODE.OK).send();
+    return reply.status(STATUS_CODE.CREATED).send();
   } catch (e) {
     if (e instanceof ApiError) {
       return reply.status(e?.statusCode).send({ message: e?.message });
