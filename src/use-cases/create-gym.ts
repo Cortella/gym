@@ -1,9 +1,5 @@
 import { GymsRepository } from "../repositories/gyms-repository";
-import { prisma } from "../lib/prisma";
-import { hash } from "bcryptjs";
 import { Gym } from "@prisma/client";
-import { ApiError } from "../errors/ApiError";
-import { STATUS_CODE } from "../utils/status-code";
 interface CreateGymUseCaseRequest {
   title: string;
   description: string | null;
@@ -11,7 +7,6 @@ interface CreateGymUseCaseRequest {
   latitude: number;
   longitude: number;
 }
-
 interface CreateGymUseCaseResponse {
   gym: Gym;
 }

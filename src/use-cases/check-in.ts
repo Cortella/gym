@@ -1,7 +1,6 @@
 import { STATUS_CODE } from "../utils/status-code";
 import { ApiError } from "../errors/ApiError";
 import { CheckInsRepository } from "../repositories/check-ins-repository";
-import { compare } from "bcryptjs";
 import { CheckIn } from "@prisma/client";
 import { GymsRepository } from "../repositories/gyms-repository";
 import { getDistanceBetweenCoordinates } from "../utils/get-distance-between-coordinates";
