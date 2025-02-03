@@ -1,8 +1,8 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
-import { ApiError } from "../../errors/ApiError";
-import { STATUS_CODE } from "../../utils/status-code";
-import { makeGetUserProfileUseCase } from "../../use-cases/factories/make-get-user-profile-use-case";
+import { ApiError } from "../../../errors/ApiError";
+import { STATUS_CODE } from "../../../utils/status-code";
+import { makeGetUserProfileUseCase } from "../../../use-cases/factories/make-get-user-profile-use-case";
 
 export async function getUserProfile(
   request: FastifyRequest,
