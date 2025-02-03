@@ -1,4 +1,4 @@
-import { describe, expect, test, it, beforeEach } from "vitest";
+import { describe, expect, it, beforeEach } from "vitest";
 import { compare, hash } from "bcryptjs";
 import { InMemoryUsersRepository } from "../repositories/in-memory/in-memory-users-repository";
 import { ApiError } from "../errors/ApiError";

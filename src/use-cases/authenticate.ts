@@ -22,14 +22,15 @@ export class AuthenticateUseCase {
   }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
     const user = await this.usersRepository.findUserByEmail(email);
 
+    console.log("user = ", user)
     if (!user) {
-      throw new ApiError("Unauthorized", STATUS_CODE.UNAUTHORIZED);
+      throw new ApiError("Invalid Credentials", STATUS_CODE.BAD_REQUEST);
     }
 
     const doesPasswordMatches = await compare(password, user.password_hash);
-
+    console.log("does pass matches = ", doesPasswordMatches)
     if (!doesPasswordMatches)
-      throw new ApiError("Unauthorized", STATUS_CODE.UNAUTHORIZED);
+      throw new ApiError("Invalid Credentials", STATUS_CODE.BAD_REQUEST);
     
     return { user }
   }
